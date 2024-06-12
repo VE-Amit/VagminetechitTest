@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RecipeApp.Views.MealPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LinkTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Blue" />
+                <Setter Property="TextDecorations" Value="Underline" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="2"
+                IsVisible="{Binding DataLoaded}"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Aspect="AspectFill"
+                    BackgroundColor="LightGray"
+                    HeightRequest="200"
+                    Source="{Binding Meal.StrMealThumb}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Name:" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontSize="Medium"
+                    Text="{Binding Meal.StrMeal}" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Category:" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    FontSize="Medium"
+                    Text="{Binding Meal.StrCategory}" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Area:" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    FontSize="Medium"
+                    Text="{Binding Meal.StrArea}" />
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Youtube Link:" />
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Style="{StaticResource LinkTextStyle}"
+                    Text="{Binding Meal.StrYoutube}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LinkClickedCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Instruction:" />
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    FontSize="Medium"
+                    Text="{Binding Meal.StrInstructions}" />
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
